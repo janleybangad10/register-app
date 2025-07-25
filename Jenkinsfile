@@ -13,7 +13,7 @@ pipeline{
          }
         stage("Checkout from SMC"){
             steps{
-                git branch: 'main', credentialsId: 'github', url 'https://github.com/janleybangad10/register-app'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/janleybangad10/register-app'
             }
         }
         stage("Build Application"){
@@ -27,8 +27,5 @@ pipeline{
                 sh "mvn test"
             }
         }
-
-        stage()
-
     }
 }
