@@ -22,7 +22,7 @@ pipeline{
             }
         }
 
-        stage("Build Application"){
+        stage("Test Application"){
             step{
                 sh "mvn test"
             }
