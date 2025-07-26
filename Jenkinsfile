@@ -50,25 +50,25 @@ pipeline{
         stage("Quality Gate"){
             steps{
             script{
-                withSonarQualityGate abortPipeline: false, credentialsId: 'jenkins-sonarqube-token'
+                waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonarqube-token'
             }
             }
             }
         }
 
-        stage("Build and push Docker Image"){
-             steps{
-                script{
-                    dockerhub.withRegistry('', DOCKER_PASS){
-                        docker_image = dockerhub.build "${IMAGE_NAME}"
-                        }
-
-                     dockerhub.withRegistry(''DOCKER_PASS){
-                        docker_image.push("${IMAGE_TAG}")
-                        docker_image.push('latest')
-                     }
-                    }
-                }
-             }
-        }
+//         stage("Build and push Docker Image"){
+//              steps{
+//                 script{
+//                     dockerhub.withRegistry('', DOCKER_PASS){
+//                         docker_image = dockerhub.build "${IMAGE_NAME}"
+//                         }
+//
+//                      dockerhub.withRegistry(''DOCKER_PASS){
+//                         docker_image.push("${IMAGE_TAG}")
+//                         docker_image.push('latest')
+//                      }
+//                     }
+//                 }
+//              }
+//         }
 }
