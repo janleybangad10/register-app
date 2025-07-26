@@ -53,9 +53,7 @@ pipeline{
                 waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonarqube-token'
             }
             }
-            }
         }
-
         stage("Build and push Docker Image"){
              steps{
                 script{
